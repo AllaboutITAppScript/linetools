@@ -150,7 +150,7 @@
         function displayContent(msgTexts, content) {
             var outputDiv = document.getElementById('output');
             outputDiv.innerHTML = `<p style="white-space: pre-line;"><b>Gemini ตอบ: </b><br>${content}</p><br>
-          <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500" id="flex">Share Content</button>`;
+          <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500" id="flex">แชร์เนื้อหานี้ให้เพื่อน</button>`;
             document.querySelector('#flex').addEventListener('click', () => {
 
                 searchflex(`${msgTexts}`, `${content}`)
