@@ -119,7 +119,7 @@
         document.getElementById('btnText').style.display = 'none';
         document.getElementById('loading').style.display = 'inline-block';
 
-        var apiKey = 'AIzaSyC96Utj8dlf5z93bTpZdEm1rWbPP2ksh7g';
+        //var apiKey = 'AIzaSyC96Utj8dlf5z93bTpZdEm1rWbPP2ksh7g';
         var apiUrl = 'https://script.google.com/macros/s/AKfycbwqX-RKje9f2Rgc2ga7kGSxZ0161LnzfUDinHuanbd7RpR9RatTbHDlR0kSNFjrXwaq/exec';
         var payload = {
             contents: [{
@@ -137,7 +137,7 @@
             body: JSON.stringify(payload)
         };
 
-        fetch(apiUrl, options)
+        fetch(apiUrl, options,description)
             .then(response => response.json())
             .then(data => {
                 var generatedContent = data.candidates[1].content.parts[1].text;
@@ -148,11 +148,11 @@
 
     function displayContent(msgTexts, content) {
         var outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = `<p style="white-space: pre-line;"><b>Gemini ตอบ: </b><br>${content}</p><br>
+        outputDiv.innerHTML = `<p style="white-space: pre-line;"><b>Gemini ตอบ: </b><br>${description}</p><br>
             <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500" id="flex">แชร์เนื้อหานี้ให้เพื่อน</button>`;
 
         document.getElementById('flex').addEventListener('click', () => {
-            searchflex(`${msgTexts}`, `${content}`);
+            searchflex(`${msgTexts}`, `${description}`);
         });
 
         document.getElementById('loading').style.display = 'none';
