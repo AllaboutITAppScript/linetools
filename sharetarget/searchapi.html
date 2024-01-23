@@ -140,7 +140,7 @@
         fetch(apiUrl, options)
             .then(response => response.json())
             .then(data => {
-                var generatedContent = data.candidates[0].content.parts[0].text;
+                var generatedContent = data.candidates[1].content.parts[1].text;
                 displayContent(msgText, generatedContent);
             })
             .catch(error => console.error('Error:', error));
