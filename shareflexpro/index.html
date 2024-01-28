@@ -161,15 +161,15 @@
       //   return message;
       // }
 
-      async function sendTemplatFlex(isFlex,altText) {
+      async function sendTemplatFlex(output,isFlex,altText) {
         method = "share";
-        let message;
+       // let message;
         if (isFlex) {
           if (output.type != "flex") {
             message = {
               type: "flex",
               altText: altText,
-              //contents: output
+              contents: output
             };
             if (message.contents.type == "carousel") {
               message.contents.contents.map(bubble => setCredit(bubble));
