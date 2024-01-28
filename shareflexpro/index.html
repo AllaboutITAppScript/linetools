@@ -139,24 +139,24 @@
               adjustMode: "shrink-to-fit"
             });
           }
-        } else {
-          message.footer = {
-            type: "box",
-            layout: "vertical",
-            spacing: "sm",
-            contents: [
-              {
-                type: "text",
-                text: " ",
-                weight: "bold",
-                align: "center",
-                decoration: "underline",
-                color: "#3366FF",
-                adjustMode: "shrink-to-fit"
-              }
-            ],
-            flex: 0
-          };
+        // } else {
+        //   message.footer = {
+        //     type: "box",
+        //     layout: "vertical",
+        //     spacing: "sm",
+        //     contents: [
+        //       {
+        //         type: "text",
+        //         text: " ",
+        //         weight: "bold",
+        //         align: "center",
+        //         decoration: "underline",
+        //         color: "#3366FF",
+        //         adjustMode: "shrink-to-fit"
+        //       }
+        //     ],
+        //     flex: 0
+        //   };
         }
         return message;
       }
@@ -171,20 +171,20 @@
               altText: altText,
               //contents: output
             };
-        //     if (message.contents.type == "carousel") {
-        //       message.contents.contents.map(bubble => setCredit(bubble));
-        //     } else {
-        //       message.contents = setCredit(message.contents);
-        //     }
-        //   } else {
-        //     message = `${output}\n`;
-        //   }
-        // } else {
-        //   message = {
-        //     type: "text",
-        //     text: `${output}\n`
-        //   };
-        // }
+            if (message.contents.type == "carousel") {
+              message.contents.contents.map(bubble => setCredit(bubble));
+            } else {
+              message.contents = setCredit(message.contents);
+            }
+          } else {
+            message = `${output}\n`;
+          }
+        } else {
+          message = {
+            type: "text",
+            text: `${output}\n`
+          };
+        }
         //console.log(message);
         liff.ready.then(() => {
           if (!liff.isInClient()) {
