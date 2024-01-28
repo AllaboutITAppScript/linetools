@@ -139,24 +139,24 @@
               adjustMode: "shrink-to-fit"
             });
           }
-        // } else {
-        //   message.footer = {
-        //     type: "box",
-        //     layout: "vertical",
-        //     spacing: "sm",
-        //     contents: [
-        //       {
-        //         type: "text",
-        //         text: " ",
-        //         weight: "bold",
-        //         align: "center",
-        //         decoration: "underline",
-        //         color: "#3366FF",
-        //         adjustMode: "shrink-to-fit"
-        //       }
-        //     ],
-        //     flex: 0
-        //   };
+        } else {
+          message.footer = {
+            type: "box",
+            layout: "vertical",
+            spacing: "sm",
+            contents: [
+              {
+                type: "text",
+                text: " ",
+                weight: "bold",
+                align: "center",
+                decoration: "underline",
+                color: "#3366FF",
+                adjustMode: "shrink-to-fit"
+              }
+            ],
+            flex: 0
+          };
         }
         return message;
       }
