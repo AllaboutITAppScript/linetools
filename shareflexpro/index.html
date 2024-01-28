@@ -169,22 +169,22 @@
             message = {
               type: "flex",
               altText: altText,
-              contents: output
+              //contents: output
             };
-            if (message.contents.type == "carousel") {
-              message.contents.contents.map(bubble => setCredit(bubble));
-            } else {
-              message.contents = setCredit(message.contents);
-            }
-          } else {
-            message = `${output}\n`;
-          }
-        } else {
-          message = {
-            type: "text",
-            text: `${output}\n`
-          };
-        }
+        //     if (message.contents.type == "carousel") {
+        //       message.contents.contents.map(bubble => setCredit(bubble));
+        //     } else {
+        //       message.contents = setCredit(message.contents);
+        //     }
+        //   } else {
+        //     message = `${output}\n`;
+        //   }
+        // } else {
+        //   message = {
+        //     type: "text",
+        //     text: `${output}\n`
+        //   };
+        // }
         //console.log(message);
         liff.ready.then(() => {
           if (!liff.isInClient()) {
