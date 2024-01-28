@@ -88,7 +88,7 @@
         let input = document.getElementById("flexjson").value;
         let altText = document.getElementById("altText").value;
         let displayName = document.getElementById("displayName").value;
-        let output;
+        //let output;
         let isFlex = false;
         try {
           let flex = JSON.parse(input);
@@ -112,54 +112,54 @@
         });
       })();
 
-      function setCredit(message) {
-        if (message.footer?.contents?.length > 0) {
-          let length = message.footer?.contents.length;
-          if (message.footer?.contents[length - 1]?.type == "spacer") {
-            message.footer.contents.push("xx");
-            length++
-            message.footer.contents[length - 1] =
-              message.footer.contents[length - 2];
-            message.footer.contents[length - 2] = {
-              type: "text",
-              text: " ",
-              weight: "bold",
-              align: "center",
-              decoration: "underline",
-              color: "#3366FF"
-            };
-          } else {
-            message.footer?.contents.push({
-              type: "text",
-              text: " ",
-              weight: "bold",
-              align: "center",
-              decoration: "underline",
-              color: "#3366FF",
-              adjustMode: "shrink-to-fit"
-            });
-          }
-        } else {
-          message.footer = {
-            type: "box",
-            layout: "vertical",
-            spacing: "sm",
-            contents: [
-              {
-                type: "text",
-                text: " ",
-                weight: "bold",
-                align: "center",
-                decoration: "underline",
-                color: "#3366FF",
-                adjustMode: "shrink-to-fit"
-              }
-            ],
-            flex: 0
-          };
-        }
-        return message;
-      }
+      // function setCredit(message) {
+      //   if (message.footer?.contents?.length > 0) {
+      //     let length = message.footer?.contents.length;
+      //     if (message.footer?.contents[length - 1]?.type == "spacer") {
+      //       message.footer.contents.push("xx");
+      //       length++
+      //       message.footer.contents[length - 1] =
+      //         message.footer.contents[length - 2];
+      //       message.footer.contents[length - 2] = {
+      //         type: "text",
+      //         text: " ",
+      //         weight: "bold",
+      //         align: "center",
+      //         decoration: "underline",
+      //         color: "#3366FF"
+      //       };
+      //     } else {
+      //       message.footer?.contents.push({
+      //         type: "text",
+      //         text: " ",
+      //         weight: "bold",
+      //         align: "center",
+      //         decoration: "underline",
+      //         color: "#3366FF",
+      //         adjustMode: "shrink-to-fit"
+      //       });
+      //     }
+      //   } else {
+      //     message.footer = {
+      //       type: "box",
+      //       layout: "vertical",
+      //       spacing: "sm",
+      //       contents: [
+      //         {
+      //           type: "text",
+      //           text: " ",
+      //           weight: "bold",
+      //           align: "center",
+      //           decoration: "underline",
+      //           color: "#3366FF",
+      //           adjustMode: "shrink-to-fit"
+      //         }
+      //       ],
+      //       flex: 0
+      //     };
+      //   }
+      //   return message;
+      // }
 
       async function sendTemplatFlex(output, isFlex,altText) {
         method = "share";
