@@ -26,12 +26,12 @@
 
 
   <link href="https://cdn.jsdelivr.net/gh/projectwebpp/npn/mdb.min.css" rel="stylesheet">
-<link href="/shareflexpro/style.css" rel="stylesheet" type="text/css" />
-<link href="/shareflexpro/flex2html.css" rel="stylesheet" type="text/css" />
- <script src="/shareflexpro/flex2html.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="flex2html.css" rel="stylesheet" type="text/css" />
+ <script src="flex2html.js"></script>
 
   </head>
-  <body onload="myFunction()">
+  <body">
 
       <div class="row justify-content-center">
         <div class="col text-center ">
@@ -88,7 +88,7 @@
         let input = document.getElementById("flexjson").value;
         let altText = document.getElementById("altText").value;
         let displayName = document.getElementById("displayName").value;
-        //let output;
+        let output;
         let isFlex = false;
         try {
           let flex = JSON.parse(input);
@@ -122,7 +122,7 @@
               message.footer.contents[length - 2];
             message.footer.contents[length - 2] = {
               type: "text",
-              text: ".",
+              text: " ",
               weight: "bold",
               align: "center",
               decoration: "underline",
@@ -148,19 +148,22 @@
               {
                 type: "text",
                 text: " ",
-                color: "#3366ff",
+                weight: "bold",
+                align: "center",
+                decoration: "underline",
+                color: "#3366FF",
                 adjustMode: "shrink-to-fit"
               }
             ],
             flex: 0
           };
         }
-       // return message;
+        return message;
       }
 
-      async function sendTemplatFlex(output,isFlex,altText) {
+      async function sendTemplatFlex(output, isFlex,altText) {
         method = "share";
-       let message;
+        let message;
         if (isFlex) {
           if (output.type != "flex") {
             message = {
@@ -296,11 +299,9 @@
               <input id="altText" type="text"  class="form-control" placeholder="Insert altText" name="altText" maxlength="20" required><br><br>
 
             
-              <a class="btn btn-outline-danger mt-2 mb-2" href="https://developers.line.biz/flex-simulator/" target="_blank" role="button"><i class="fa-solid fa-message fa-beat-fade"></i> เครื่องมือออกแบบFlexMessage</a>  
-  <span class="badge rounded-pill bg-danger" type="button" onclick="resetJson()">ลบโค๊ด Json</span>
-  <span type="button" class="badge rounded-pill bg-primary" onclick="paste()">วาง Json</span><br>
+              <a class="btn btn-outline-danger mt-2 mb-2" href="https://developers.line.biz/flex-simulator/" target="_blank" role="button"><i class="fa-solid fa-message fa-beat-fade"></i> เครื่องมือออกแบบFlexMessage</a><br>
                 <label for="flexjson"><b>วางFlex Jsonลงในช่องด้านล่าง</b></label><br>
-              <textarea id="flexjson"  class="form-control"name="flexjson" rows="20" cols="50" onchange="myFunction()" readonly>{
+              <textarea id="flexjson"  class="form-control"name="flexjson" rows="20" cols="50" onchange="myFunction()">{
           "type": "bubble",
           "body": {
             "type": "box",
@@ -308,7 +309,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "FlexMessage ProVersion"
+                "text": "hello"
               }
             ]
           }
@@ -346,7 +347,6 @@
   }
 }
       </script>
-  <script src="/shareflexpro/script.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>    
   </body>
