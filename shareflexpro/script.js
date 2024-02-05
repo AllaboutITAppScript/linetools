@@ -16,3 +16,15 @@ function paste() {
             console.error('ไม่สามารถแปะข้อมูลจากคลิปบอร์ดได้: ', err);
         });
 }
+
+function enableInputflex(){
+   $("#flexjson").prop("readonly", false); 
+   $("#unlock").hide()
+   $("#lock").show()
+}
+
+function lockinput(){
+   $("#flexjson").prop("readonly", true); 
+   $("#unlock").show()
+   $("#lock").hide()
+}
