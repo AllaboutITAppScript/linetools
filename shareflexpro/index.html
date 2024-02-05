@@ -301,6 +301,10 @@
             
               <a class="btn btn-outline-danger mt-2 mb-2" href="https://developers.line.biz/flex-simulator/" target="_blank" role="button"><i class="fa-solid fa-message fa-beat-fade"></i> เครื่องมือออกแบบFlexMessage</a><br>
                 <label for="flexjson"><b>วางFlex Jsonลงในช่องด้านล่าง</b></label><br>
+               <span class="badge rounded-pill bg-danger" type="button" onclick="resetJson()">ลบโค๊ด Json</span>
+               <span type="button" class="badge rounded-pill bg-primary" onclick="paste()">วาง Json</span>
+               <span type="button" class="badge rounded-pill bg-success" onclick="enableInputflex()" id="unlock">พิมพ์โค๊ดJsonเอง</span>
+              <span type="button" class="badge rounded-pill bg-secondary" onclick="lockinput()" id="lock" style="display: none;">ล็อค</span>
               <textarea id="flexjson"  class="form-control"name="flexjson" rows="20" cols="50" onchange="myFunction()">{
           "type": "bubble",
           "body": {
