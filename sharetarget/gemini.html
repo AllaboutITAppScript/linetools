@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -6,14 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>ค้นหาข้อมูลจากSheet</title>
+    <title>Gemini for LIFF</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js"></script>
-    <!-- LineSeed Fonts -->
-<link href="https://cdn.jsdelivr.net/gh/maketline/goodday/font/stylesheet.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://bit.ly/fontiton5" type="text/css" charset="utf-8" />
     <style type="text/css">
         body {
             background-color: #f7f7f7;
@@ -60,7 +59,7 @@
                 <button
                     class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
                     onclick="generateAndDisplayContent()">
-                    <span id="btnText">ค้นหาข้อมูล</span>
+                    <span id="btnText">Send</span>
                     <span id="loading" class="hidden ml-2"><svg aria-hidden="true" role="status"
                             class="inline w-4 h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +69,7 @@
                             <path
                                 d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
                                 fill="currentColor" />
-                        </svg> กำลังค้นหา...</span>
+                        </svg> Loading...</span>
                 </button>
             </div>
 
@@ -119,9 +118,9 @@
             document.getElementById('btnText').style.display = 'none';
             document.getElementById('loading').style.display = 'inline-block';
 
-            var apiKey = 'AIzaSyC96Utj8dlf5z93bTpZdEm1rWbPP2ksh7g';
+            var apiKey = 'AIzaSyCNpMXvT_luFhPM-JngSFHN009nSVjP5Bo';
             var apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey;
-            //var apiUrl ='https://script.google.com/macros/s/AKfycbwqX-RKje9f2Rgc2ga7kGSxZ0161LnzfUDinHuanbd7RpR9RatTbHDlR0kSNFjrXwaq/exec'
+
             var payload = {
                 contents: [{
                     parts: [{
@@ -150,7 +149,7 @@
         function displayContent(msgTexts, content) {
             var outputDiv = document.getElementById('output');
             outputDiv.innerHTML = `<p style="white-space: pre-line;"><b>Gemini ตอบ: </b><br>${content}</p><br>
-          <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500" id="flex">แชร์เนื้อหานี้ให้เพื่อน</button>`;
+          <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500" id="flex">Share Content</button>`;
             document.querySelector('#flex').addEventListener('click', () => {
 
                 searchflex(`${msgTexts}`, `${content}`)
@@ -169,7 +168,7 @@
 
             liff.shareTargetPicker([{
                 "type": "flex",
-                "altText": "แชร์โดย " + liff.getDecodedIDToken().name,
+                "altText": "แชร์จาก " + liff.getDecodedIDToken().name,
                 "contents": {
                     "type": "bubble",
                     "header": {
@@ -273,7 +272,7 @@
                                         "action": {
                                             "type": "uri",
                                             "label": "ถาม AI เลย",
-                                            "uri": "line://app/1656032875-dMjmJ80q?linkurl=https://allaboutitappscript.github.io/linetools/sharetarget/gemini.html"
+                                            "uri": "https://line.me/R/app/1654250114-bV8pOapK?liff=https://iton5.droppages.com/geminiweb.html"
                                         },
                                         "height": "sm",
                                         "style": "primary",
