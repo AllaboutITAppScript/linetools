@@ -93,6 +93,63 @@
       }
     }
 
+    function shareMessage() {
+      if (userProfile) {
+        const flexMessage = {
+          type: "flex",
+          altText: "User Profile",
+          contents: {
+            type: "bubble",
+            hero: {
+              type: "image",
+              url: userProfile.pictureUrl,
+              size: "full",
+              aspectRatio: "1:1",
+              aspectMode: "cover",
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: userProfile.displayName,
+                  weight: "bold",
+                  size: "xl"
+                },
+                {
+                  type: "text",
+                  text: `User ID: ${userProfile.userId}`,
+                  size: "sm",
+                  color: "#999999"
+                },
+                {
+                  type: "text",
+                  text: `Status Message: ${userProfile.statusMessage}`,
+                  size: "sm",
+                  color: "#999999",
+                  wrap: true
+                }
+              ]
+            }
+          }
+        };
+
+        liff.shareTargetPicker([flexMessage])
+          .then((res) => {
+            if (res) {
+              alert('Profile shared!');
+            } else {
+              alert('Share target picker was closed.');
+            }
+          })
+          .catch((error) => {
+            console.error('Error sharing message: ', error);
+            alert('Error sharing message: ' + error);
+          });
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
       var myLiffId = '1656032875-dMjmJ80q'; // Replace with your LIFF ID
       console.log('DOMContentLoaded');
@@ -107,6 +164,7 @@
   <p id="statusMessage"></p>
   <img id="profileImage" src="" alt="Profile Image" style="width:100px;height:100px;" />
   <button onclick="sendMessage()">Send Profile</button>
+  <button onclick="shareMessage()">Share Profile</button>
 </body>
 
 </html>
