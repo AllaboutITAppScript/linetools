@@ -19,7 +19,7 @@
               .then(profile => {
                 console.log('Profile retrieved', profile);
                 userProfile = profile;
-                document.getElementById('displayName').textContent = `Hello, ${profile.displayName}`;
+                document.getElementById('displayName').textContent = `สวัสดีคุณ:, ${profile.displayName}`;
                 document.getElementById('userId').textContent = `User ID: ${profile.userId}`;
                 document.getElementById('statusMessage').textContent = `Status Message: ${profile.statusMessage}`;
                 document.getElementById('profileImage').src = profile.pictureUrl;
