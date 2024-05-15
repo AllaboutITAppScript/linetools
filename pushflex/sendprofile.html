@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My LIFF App</title>
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script>
+    let userProfile;
+
+    function initializeLiff(myLiffId) {
+      console.log('Initializing LIFF');
+      liff.init({ liffId: myLiffId })
+        .then(() => {
+          console.log('LIFF initialized');
+          if (liff.isLoggedIn()) {
+            console.log('User is logged in');
+            liff.getProfile()
+              .then(profile => {
+                console.log('Profile retrieved', profile);
+                userProfile = profile;
+                document.getElementById('displayName').textContent = `Hello, ${profile.displayName}`;
+                document.getElementById('userId').textContent = `User ID: ${profile.userId}`;
+                document.getElementById('statusMessage').textContent = `Status Message: ${profile.statusMessage}`;
+                document.getElementById('profileImage').src = profile.pictureUrl;
+              })
+              .catch(err => {
+                console.error('Error getting profile: ', err);
+              });
+          } else {
+            console.log('User is not logged in, redirecting to login');
+            liff.login();
+          }
+        })
+        .catch(err => {
+          console.error('LIFF Initialization failed ', err);
+        });
+    }
+
+    function sendMessage() {
+      if (!liff.isInClient()) {
+        alert('This function is only available in the LINE app.');
+        return;
+      }
+      if (userProfile) {
+        const flexMessage = {
+          type: "flex",
+          altText: "User Profile",
+          contents: {
+            type: "bubble",
+            hero: {
+              type: "image",
+              url: userProfile.pictureUrl,
+              size: "full",
+              aspectRatio: "1:1",
+              aspectMode: "cover",
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: userProfile.displayName,
+                  weight: "bold",
+                  size: "xl"
+                },
+                {
+                  type: "text",
+                  text: `User ID: ${userProfile.userId}`,
+                  size: "sm",
+                  color: "#999999"
+                },
+                {
+                  type: "text",
+                  text: `Status Message: ${userProfile.statusMessage}`,
+                  size: "sm",
+                  color: "#999999",
+                  wrap: true
+                }
+              ]
+            }
+          }
+        };
+
+        liff.sendMessages([flexMessage])
+          .then(() => {
+            alert('Profile sent!');
+          })
+          .catch((error) => {
+            console.error('Error sending message: ', error);
+            alert('Error sending message: ' + error);
+          });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var myLiffId = '1656032875-dMjmJ80q'; // Replace with your LIFF ID
+      console.log('DOMContentLoaded');
+      initializeLiff(myLiffId);
+    });
+  </script>
+</head>
+
+<body>
+  <h1 id="displayName">Hello, LIFF</h1>
+  <p id="userId"></p>
+  <p id="statusMessage"></p>
+  <img id="profileImage" src="" alt="Profile Image" style="width:100px;height:100px;" />
+  <button onclick="sendMessage()">Send Profile</button>
+</body>
+
+</html>
