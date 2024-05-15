@@ -48,57 +48,41 @@
           type: "flex",
           altText: "User Profile",
           contents: {
-  type: "flex",
-  altText: "User Profile with QR Code",
-  contents: {
-    type: "bubble",
-    hero: {
-      type: "image",
-      url: userProfile.pictureUrl,
-      size: "full",
-      aspectRatio: "1:1",
-      aspectMode: "cover"
-    },
-    body: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "text",
-          text: userProfile.displayName,
-          weight: "bold",
-          size: "xl"
-        },
-        {
-          type: "text",
-          text: `User ID: ${userProfile.userId}`,
-          size: "sm",
-          color: "#999999"
-        },
-        {
-          type: "text",
-          text: `Status Message: ${userProfile.statusMessage}`,
-          size: "sm",
-          color: "#999999",
-          wrap: true
-        }
-      ]
-    },
-    footer: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "image",
-          url: qrImgUrl,
-          size: "full",
-          aspectRatio: "1:1",
-          aspectMode: "cover"
-        }
-      ]
-    }
-  }
-};
+            type: "bubble",
+            hero: {
+              type: "image",
+              url: userProfile.pictureUrl,
+              size: "full",
+              aspectRatio: "1:1",
+              aspectMode: "cover",
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: userProfile.displayName,
+                  weight: "bold",
+                  size: "xl"
+                },
+                {
+                  type: "text",
+                  text: `User ID: ${userProfile.userId}`,
+                  size: "sm",
+                  color: "#999999"
+                },
+                {
+                  type: "text",
+                  text: `Status Message: ${userProfile.statusMessage}`,
+                  size: "sm",
+                  color: "#999999",
+                  wrap: true
+                }
+              ]
+            }
+          }
+        };
 
         liff.sendMessages([flexMessage])
           .then(() => {
@@ -117,57 +101,41 @@
           type: "flex",
           altText: "User Profile",
           contents: {
-  type: "flex",
-  altText: "User Profile with QR Code",
-  contents: {
-    type: "bubble",
-    hero: {
-      type: "image",
-      url: userProfile.pictureUrl,
-      size: "full",
-      aspectRatio: "1:1",
-      aspectMode: "cover"
-    },
-    body: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "text",
-          text: userProfile.displayName,
-          weight: "bold",
-          size: "xl"
-        },
-        {
-          type: "text",
-          text: `User ID: ${userProfile.userId}`,
-          size: "sm",
-          color: "#999999"
-        },
-        {
-          type: "text",
-          text: `Status Message: ${userProfile.statusMessage}`,
-          size: "sm",
-          color: "#999999",
-          wrap: true
-        }
-      ]
-    },
-    footer: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "image",
-          url: qrImgUrl,
-          size: "full",
-          aspectRatio: "1:1",
-          aspectMode: "cover"
-        }
-      ]
-    }
-  }
-};
+            type: "bubble",
+            hero: {
+              type: "image",
+              url: userProfile.pictureUrl,
+              size: "full",
+              aspectRatio: "1:1",
+              aspectMode: "cover",
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: userProfile.displayName,
+                  weight: "bold",
+                  size: "xl"
+                },
+                {
+                  type: "text",
+                  text: `User ID: ${userProfile.userId}`,
+                  size: "sm",
+                  color: "#999999"
+                },
+                {
+                  type: "text",
+                  text: `Status Message: ${userProfile.statusMessage}`,
+                  size: "sm",
+                  color: "#999999",
+                  wrap: true
+                }
+              ]
+            }
+          }
+        };
 
         liff.shareTargetPicker([flexMessage])
           .then((res) => {
