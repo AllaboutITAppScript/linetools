@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-overlay">
+        <p>Loading...</p>
+    </div>
+    <form id="complaint-form">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required><br><br>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="picture">Picture URL:</label>
+        <input type="text" id="picture" name="picture" required><br><br>
+        
+        <label for="complain">Complain:</label>
+        <textarea id="complain" name="complain" required></textarea><br><br>
+        
+        <button type="button" onclick="sendToSheet()">Submit</button>
+    </form>
+
+    <script>
+        async function sendToSheet() {
+            $('#loading-overlay').show();
+            const userId = $('#userId').val();
+            const name = $('#name').val();
+            const picture = $('#picture').val();
+            const complain = $('#complain').val();
+
+            try {
+                const response = await $.post('https://script.google.com/macros/s/AKfycbyhJcKK-qiCqiaLu1PiEyFrccx-r2xd8X6KiaaT93S3GBQenRzTxPBib4CDfEOoCSas/exec', {
+                    userId: userId,
+                    name: name,
+                    picture: picture,
+                    complain: complain
+                });
+
+                $('#loading-overlay').hide();
+                if (response.statusCode === 200) {
+                    const flexMessage = JSON.parse(response.body);
+                    Swal.fire('ดำเนินการสำเร็จ', 'ขอบคุณสำหรับความคิดเห็น', 'success').then(() => {
+                        // Clear the form
+                        $('#complaint-form')[0].reset();
+                    });
+                }
+            } catch (error) {
+                console.error('Error sending data to sheet', error);
+                $('#loading-overlay').hide();
+            }
+        }
+    </script>
+</body>
+</html>
