@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Flex Message Sender</title>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     function sendFlexMessage() {
       // URL ของ API ที่ต้องการดึงข้อมูล
@@ -119,7 +120,14 @@
           liff.login();
         } else {
           liff.shareTargetPicker([flexMessage]).then(() => {
-            console.log('Message sent');
+            Swal.fire({
+              title: 'สำเร็จ!',
+              text: 'ส่งข้อความเรียบร้อยแล้ว',
+              icon: 'success',
+              confirmButtonText: 'ตกลง'
+            }).then(() => {
+              liff.closeWindow();
+            });
           }).catch((err) => {
             console.error('Error sending message: ', err);
           });
